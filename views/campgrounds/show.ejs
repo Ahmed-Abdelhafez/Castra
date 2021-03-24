@@ -3,7 +3,6 @@
 
 <div class="row">
     <div class="col-6">
-        <div id='map' style='width: 400px; height: 300px;'></div>
         <div id="campgroundCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <% campground.images.forEach((img, i) => { %>
@@ -12,16 +11,16 @@
                 </div>
                 <% }) %>
             </div>
-            <% if (campground.images.length > 1) { %>
-            <a class="carousel-control-prev" role="button" data-bs-target="#campgroundCarousel"  data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </a>
-            <a class="carousel-control-next" role="button" data-bs-target="#campgroundCarousel"  data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </a>
-            <% } %>
+            <% if(campground.images.length > 1) {%>
+                <a class="carousel-control-prev" href="#campgroundCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#campgroundCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                <% } %>
           </div>
         <div class="card mb-3">
             <div class="card-body">
@@ -47,6 +46,8 @@
         </div>   
     </div>
     <div class="col-6">
+        <div id='map'></div>
+
         <% if(currentUser) { %> 
         <h2>Leave a Review</h2>
         <form action="/campgrounds/<%= campground._id %>/reviews" method="POST" class="mb-3 needs-validation" novalidate>
